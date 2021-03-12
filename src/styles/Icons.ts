@@ -1,0 +1,16 @@
+export {
+  DeleteSweep,
+  Check as Add,
+  Save,
+  NavigateNext,
+  AirplanemodeActive,
+  DirectionsBoat,
+  DirectionsBus as LocalShipping,
+  ArrowCircleDown as FlightLand,
+  ArrowCircleUp as FlightTakeoff,
+  Translate,
+  TextFormat,
+  NextPlan,
+  AccountCircle,
+  Calculate,
+} from 'styled-icons/material-outlined';
