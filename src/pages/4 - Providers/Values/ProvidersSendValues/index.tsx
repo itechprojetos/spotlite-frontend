@@ -159,122 +159,122 @@ const optionsCalculationCurrency = [
   { label: 'BRL', value: 'BRL' },
 ];
 
-  interface SendTaxesFormData {
-      air_ncn_freight_minimum: number;
-      air_ncn_freight_weight: number;
-      air_ncn_collect: number;
-      air_ncn_dispatch: number;
-      air_ncn_delivery: number;
-      air_ncn_ad_valorem: number;
-      air_ncn_gris_minimum: number;
-      air_ncn_gris_percentual: number;
-      transit_time: number;
-  }
+interface SendTaxesFormData {
+  air_ncn_freight_minimum: number;
+  air_ncn_freight_weight: number;
+  air_ncn_collect: number;
+  air_ncn_dispatch: number;
+  air_ncn_delivery: number;
+  air_ncn_ad_valorem: number;
+  air_ncn_gris_minimum: number;
+  air_ncn_gris_percentual: number;
+  transit_time: number;
+}
 
-  interface SpotProvidersData {
-      pickup_min: number;
-      pickup_min_currency: string;
+interface SpotProvidersData {
+  pickup_min: number;
+  pickup_min_currency: string;
 
-      pickup_ton: number;
-      pickup_ton_currency: string;
+  pickup_ton: number;
+  pickup_ton_currency: string;
 
-      lcl_min: number;
-      lcl_min_currency: string;
+  lcl_min: number;
+  lcl_min_currency: string;
 
-      lcl_ton: number;
-      lcl_ton_currency: string;
+  lcl_ton: number;
+  lcl_ton_currency: string;
 
-      desconsol: number;
-      desconsol_currency: string;
+  desconsol: number;
+  desconsol_currency: string;
 
-      handling: number;
-      handling_currency: string;
+  handling: number;
+  handling_currency: string;
 
-      transit_time: string;
+  transit_time: string;
 
-      provider: {
-          name: string;
-      };
-
-      spot: {
-          weight: number;
-          spot_value: number;
-      };
-  }
-
-  interface LocationState {
+  provider: {
     name: string;
-    email: string;
-    spot_providers_id: string;
-    title: string;
-    pickup_city_state: string;
-    delivery_city_state: string;
-    modal: string;
-    load_type: string;
-    closure_days: string;
-  }
+  };
 
-  interface CurrencyLabel {
-      label: string;
-      value: number;
-  }
+  spot: {
+    weight: number;
+    spot_value: number;
+  };
+}
 
-  interface OriginCostFormData {
-      air_ncn_freight_minimum: number;
-      air_ncn_freight_weight: number;
-      air_ncn_collect: number;
-  }
+interface LocationState {
+  name: string;
+  email: string;
+  spot_providers_id: string;
+  title: string;
+  pickup_city_state: string;
+  delivery_city_state: string;
+  modal: string;
+  load_type: string;
+  closure_days: string;
+}
 
-  interface ShippingCostsFormData {
-      air_ncn_dispatch: number;
-  }
+interface CurrencyLabel {
+  label: string;
+  value: number;
+}
 
-  interface DestinationCostsFormData {
-      air_ncn_delivery: number;
-      air_ncn_ad_valorem: number;
-      air_ncn_gris_minimum: number;
-      air_ncn_gris_percentual: number;
-  }
+interface OriginCostFormData {
+  air_ncn_freight_minimum: number;
+  air_ncn_freight_weight: number;
+  air_ncn_collect: number;
+}
 
-  interface ExclusiveFeeFormData {
-    exclusive_fee_description: string;
-    // air_ncn_exclusive_fee: number;
+interface ShippingCostsFormData {
+  air_ncn_dispatch: number;
+}
 
-    fixed_value: number;
-    product_percentage: number;
-    product_percentage_with_mininum: number;
-    product_percentage_with_mininum_minimum: number;
-    value_kilo: number;
-    value_kilo_with_minimum: number;
-    value_kilo_with_minimum_minimum: number;
-    shipping_percentage: number;
-    shipping_percentage_minimum: number;
-    shipping_percentage_minimum_minimum: number;
-  }
+interface DestinationCostsFormData {
+  air_ncn_delivery: number;
+  air_ncn_ad_valorem: number;
+  air_ncn_gris_minimum: number;
+  air_ncn_gris_percentual: number;
+}
 
-  interface TotalCostsFormData {
-      air_ncn_exclusive_fee: number;
-  }
+interface ExclusiveFeeFormData {
+  exclusive_fee_description: string;
+  // air_ncn_exclusive_fee: number;
 
-  interface ExclusiveFees {
-      id: string;
-      tax_description: string;
-      tax_logic: string | undefined;
-      tax_currency: string | undefined;
-      tax_amount: string | undefined;
+  fixed_value: number;
+  product_percentage: number;
+  product_percentage_with_mininum: number;
+  product_percentage_with_mininum_minimum: number;
+  value_kilo: number;
+  value_kilo_with_minimum: number;
+  value_kilo_with_minimum_minimum: number;
+  shipping_percentage: number;
+  shipping_percentage_minimum: number;
+  shipping_percentage_minimum_minimum: number;
+}
 
-      percentual: string | undefined;
-      minimum_label: string | undefined;
-      minimum: string | undefined;
-  }
+interface TotalCostsFormData {
+  air_ncn_exclusive_fee: number;
+}
 
-  interface ConvertExclusiveFees {
-      spot_provider_id: string;
-      description: string;
-      logic: string;
-      tax: string;
-      amount: number;
-  }
+interface ExclusiveFees {
+  id: string;
+  tax_description: string;
+  tax_logic: string | undefined;
+  tax_currency: string | undefined;
+  tax_amount: string | undefined;
+
+  percentual: string | undefined;
+  minimum_label: string | undefined;
+  minimum: string | undefined;
+}
+
+interface ConvertExclusiveFees {
+  spot_provider_id: string;
+  description: string;
+  logic: string;
+  tax: string;
+  amount: number;
+}
 
 const ProvidersSendValues: React.FC = () => {
   const history = useHistory();
@@ -439,7 +439,27 @@ const ProvidersSendValues: React.FC = () => {
 
 
     setCurrenciesOriginal(tempOriginal);
-    setCurrencies(temp);
+
+    const majorCurrenciesLabel = ['BRL', 'USD', 'EUR'];
+    const majorCurrencies = temp.filter(({ label }) => majorCurrenciesLabel.includes(label));
+    const othersCurrencies = temp.filter(({ label }) => !majorCurrenciesLabel.includes(label));
+
+    majorCurrencies.sort(({ label }) => {
+      if (label === 'USD') {
+        return -1;
+      }
+
+      if (label === 'EUR') {
+        return -1;
+      }
+
+      return 0;
+    });
+
+    setCurrencies([
+      ...majorCurrencies,
+      ...othersCurrencies,
+    ]);
   }, []);
 
   const loadSpot = useCallback(async () => {
@@ -463,6 +483,17 @@ const ProvidersSendValues: React.FC = () => {
     loadAPI();
     loadSpot();
   }, [loadAPI, loadSpot]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      originFormRef.current?.submitForm();
+      shippingFormRef.current?.submitForm();
+      destinationFormRef.current?.submitForm();
+      totalFormRef.current?.submitForm();
+    }, 100);
+
+    return (): void => clearInterval(interval);
+  }, [originFormRef, shippingFormRef, destinationFormRef, totalFormRef]);
 
   // Faz o controle de qual moeda da seção Custos de Origem o prestador deseja ver seus totais
   const handleChangeViewCurrencyOriginCosts = useCallback((currency) => {
@@ -688,7 +719,7 @@ const ProvidersSendValues: React.FC = () => {
     let { value } = e.currentTarget;
     value = value.replace(/\D/g, '');
 
-    value = value.replace(/(\d)(\d{1})$/, '$1.$2');
+    value = value.replace(/(\d)(\d{2})$/, '$1.$2');
     // value = value.replace(/(?=(\d{3})+(\D))\B/g, '.');
 
     e.currentTarget.value = value;
@@ -1547,7 +1578,6 @@ const ProvidersSendValues: React.FC = () => {
                 {typeExTaxFixedValue ? (
                   <>
                     <InputLabel autoComplete="off" id="11" name="fixed_value" label="Valor fixo" onKeyUp={handleCurrency} />
-
                   </>
                 ) : (
                   <>
@@ -1783,6 +1813,5 @@ const ProvidersSendValues: React.FC = () => {
     </>
   );
 };
-
 
 export default ProvidersSendValues;

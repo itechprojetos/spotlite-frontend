@@ -10,7 +10,6 @@ overflow-y: hidden;
         width: 60%;
         /* display: flex; */
         flex-wrap: wrap;
-        margin-top: 20px;
         align-items: center;
         margin-bottom: 20px;
         /* justify-content: space-between; */
@@ -224,7 +223,8 @@ export const ContainerHeaderSpecifications = styled.div`
 
     border-radius: 4px;
 
-    border: #33415C solid 4px;
+    border: #33415C solid 3px;
+    padding: 1rem 0;
 `;
 
 export const ContainerHeaderGrid = styled.div`
@@ -379,9 +379,10 @@ export const SpaceEmptyHeader = styled.button`
 export const SectionContainer = styled.div`
     width: 100%;
     justify-content: flex-end;
-    margin-top: 25px;
-
-    border-bottom: #33415C solid 4px ;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: #33415C solid 3px;
 
     /* border: #000 solid 4px; */
 `;
