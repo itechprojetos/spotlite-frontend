@@ -1,38 +1,36 @@
-import React, {
-  createContext, useCallback, useState, useContext,
-} from 'react';
+import React, { createContext, useCallback, useState, useContext } from 'react';
 import api from '../services/api';
 
 interface User {
-    id: string;
-    name: string;
-    email: string;
-    permission: string;
-    company_id: string;
-    company_name: string;
-    approval_limit: string;
-    currency1: string;
-    currency2: string;
-    currency3: string;
-    avatar_url: string;
-    active: string;
+  id: string;
+  name: string;
+  email: string;
+  permission: string;
+  company_id: string;
+  company_name: string;
+  approval_limit: string;
+  currency1: string;
+  currency2: string;
+  currency3: string;
+  avatar_url: string;
+  active: string;
 }
 
 interface AuthState {
-    token: string;
-    user: User;
+  token: string;
+  user: User;
 }
 
 interface SignInCredentials {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 }
 
 interface AuthContextData {
-    user: User;
-    signIn(credentials: SignInCredentials): Promise<void>;
-    signOut(): void;
-    updateUSer(user: User): void;
+  user: User;
+  signIn(credentials: SignInCredentials): Promise<void>;
+  signOut(): void;
+  updateUSer(user: User): void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);

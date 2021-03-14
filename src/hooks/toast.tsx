@@ -1,21 +1,17 @@
-import React, {
-  createContext, useContext, useCallback, useState,
-} from 'react';
-
+import React, { createContext, useContext, useCallback, useState } from 'react';
 import { uuid } from 'uuidv4';
-
 import ToastContainer from '../components/ToastContainer';
 
 export interface ToastMessage {
-    id: string;
-    type?: 'sucess' | 'error' | 'info';
-    title: string;
-    description?: string;
+  id: string;
+  type?: 'sucess' | 'error' | 'info';
+  title: string;
+  description?: string;
 }
 
 interface ToastContextData {
-    addToast(message: Omit<ToastMessage, 'id'>): void;
-    removeToast(id: string): void;
+  addToast(message: Omit<ToastMessage, 'id'>): void;
+  removeToast(id: string): void;
 }
 
 const ToastContext = createContext<ToastContextData>({} as ToastContextData);
