@@ -11,8 +11,8 @@ import { v4 as uuid } from 'uuid';
 import { useHistory, useLocation } from 'react-router-dom';
 import {
   FaTelegramPlane,
-  FaCalculator,
   FaRegTrashAlt,
+  FaPlus,
 } from 'react-icons/fa';
 
 import * as Yup from 'yup';
@@ -104,6 +104,7 @@ import {
   InputSubtotalCurrencyPicker,
   InputTaxCurrencyPickerSecondaryValue,
   InputTaxAmountListSecondary,
+  InputOthersTaxContainer,
 } from './styles';
 
 const useStyles = makeStyles({
@@ -624,6 +625,36 @@ const ProvidersSendValues: React.FC = () => {
       totalFormRef.current?.submitForm();
       setViewCurrencyTotalDefault(currency);
   }, []);
+
+  useEffect(() => {
+    formatCurrencies.map((currency) => {
+      if (currency.label === 'USD') {
+        [
+          set_air_ncn_freight_currency, set_air_ncn_collect_currency,
+          set_air_ncn_dispatch_currency, set_air_ncn_delivery_currency,
+          set_air_ncn_gris_minimum_currency, set_air_ncn_exclusive_fee_currency,
+        ].map((stateFn) => {
+          stateFn(currency.merge);
+          return stateFn;
+        });
+
+        [
+          handleChangeViewCurrencyOriginCosts, handleChangeViewCurrencyShippingCosts,
+          handleChangeViewCurrencyDestinationCosts, handleChangeViewCurrencyOtherTaxes,
+          handleChangeViewCurrencyTotal,
+        ].map((handleFn) => {
+          handleFn('USD');
+          return handleFn;
+        });
+      }
+
+      return currency;
+    });
+  }, [
+    formatCurrencies, handleChangeViewCurrencyDestinationCosts,
+    handleChangeViewCurrencyOriginCosts, handleChangeViewCurrencyOtherTaxes,
+    handleChangeViewCurrencyShippingCosts, handleChangeViewCurrencyTotal,
+  ]);
 
   const handleSubmit = useCallback(async () => {
     try {
@@ -1535,8 +1566,8 @@ const ProvidersSendValues: React.FC = () => {
             <InputsTaxesContainer>
               <InputTaxTitle>
                 <InputLabel autoComplete="off" id="10" name="exclusive_fee_description" label="Dê um título para essa taxa" />
-
               </InputTaxTitle>
+
               <InputTaxCurrencyPicker>
                 <FormControl className={classes.root}>
                   <Select
@@ -1573,73 +1604,84 @@ const ProvidersSendValues: React.FC = () => {
                 </FormControl>
               </InputTaxCurrencyPicker>
 
-              <InputTaxAmount>
-                {/* <InputLabel autoComplete="off" id="11" name="air_ncn_exclusive_fee" label="Valor fixo" onKeyUp={handleCurrency} /> */}
-                {typeExTaxFixedValue ? (
-                  <>
-                    <InputLabel autoComplete="off" id="11" name="fixed_value" label="Valor fixo" onKeyUp={handleCurrency} />
-                  </>
-                ) : (
-                  <>
-                  </>
-                )}
-                {typeExTaxProductPercentage ? (
-                  <>
-                    <InputLabel autoComplete="off" id="12" name="product_percentage" label="% mercadoria" onKeyUp={handlePercentual} />
+              <InputOthersTaxContainer>
+                <InputTaxAmount>
+                  {/* <InputLabel autoComplete="off" id="11" name="air_ncn_exclusive_fee" label="Valor fixo" onKeyUp={handleCurrency} /> */}
+                  {typeExTaxFixedValue ? (
+                    <>
+                      <InputLabel autoComplete="off" id="11" name="fixed_value" label="Valor fixo" onKeyUp={handleCurrency} />
+                    </>
+                  ) : (
+                    <>
+                    </>
+                  )}
+                  {typeExTaxProductPercentage ? (
+                    <>
+                      <InputLabel autoComplete="off" id="12" name="product_percentage" label="% mercadoria" onKeyUp={handlePercentual} />
 
-                  </>
-                ) : (
-                  <>
-                  </>
-                )}
-                {typeExTaxProductPercentageWithMinimum ? (
-                  <>
-                    <InputLabel autoComplete="off" id="13" name="product_percentage_with_mininum" label="% mercadoria" onKeyUp={handlePercentual} />
-                    <InputLabel autoComplete="off" id="14" name="product_percentage_with_mininum_minimum" label="Valor mínimo" onKeyUp={handleCurrency} />
-                  </>
-                ) : (
-                  <>
-                  </>
-                )}
-                {typeExTaxValueKilo ? (
-                  <>
-                    <InputLabel autoComplete="off" id="15" name="value_kilo" label="Valor por kg" onKeyUp={handleCurrency} />
+                    </>
+                  ) : (
+                    <>
+                    </>
+                  )}
+                  {typeExTaxProductPercentageWithMinimum ? (
+                    <>
+                      <InputLabel autoComplete="off" id="13" name="product_percentage_with_mininum" label="% mercadoria" onKeyUp={handlePercentual} />
+                      <InputLabel autoComplete="off" id="14" name="product_percentage_with_mininum_minimum" label="Valor mínimo" onKeyUp={handleCurrency} />
+                    </>
+                  ) : (
+                    <>
+                    </>
+                  )}
+                  {typeExTaxValueKilo ? (
+                    <>
+                      <InputLabel autoComplete="off" id="15" name="value_kilo" label="Valor por kg" onKeyUp={handleCurrency} />
 
-                  </>
-                ) : (
-                  <>
-                  </>
-                )}
-                {typeExTaxValueKiloWithMinimum ? (
-                  <>
-                    <InputLabel autoComplete="off" id="16" name="value_kilo_with_minimum" label="Valor por kg" onKeyUp={handleCurrency} />
-                    <InputLabel autoComplete="off" id="17" name="value_kilo_with_minimum_minimum" label="Valor mínimo" onKeyUp={handleCurrency} />
-                  </>
-                ) : (
-                  <>
-                  </>
-                )}
-                {typeExTaxShippingPercentage ? (
-                  <>
-                    <InputLabel autoComplete="off" id="19" name="shipping_percentage" label="% frete" onKeyUp={handlePercentual} />
+                    </>
+                  ) : (
+                    <>
+                    </>
+                  )}
+                  {typeExTaxValueKiloWithMinimum ? (
+                    <>
+                      <InputLabel autoComplete="off" id="16" name="value_kilo_with_minimum" label="Valor por kg" onKeyUp={handleCurrency} />
+                      <InputLabel autoComplete="off" id="17" name="value_kilo_with_minimum_minimum" label="Valor mínimo" onKeyUp={handleCurrency} />
+                    </>
+                  ) : (
+                    <>
+                    </>
+                  )}
+                  {typeExTaxShippingPercentage ? (
+                    <>
+                      <InputLabel autoComplete="off" id="19" name="shipping_percentage" label="% frete" onKeyUp={handlePercentual} />
 
-                  </>
-                ) : (
-                  <>
-                  </>
-                )}
-                {typeExTaxShippingPercentageWithMinimum ? (
-                  <>
-                    <InputLabel autoComplete="off" id="20" name="shipping_percentage_minimum" label="% frete" onKeyUp={handlePercentual} />
-                    <InputLabel autoComplete="off" id="21" name="shipping_percentage_minimum_minimum" label="Valor mínimo" onKeyUp={handleCurrency} />
-                  </>
-                ) : (
-                  <>
-                  </>
-                )}
+                    </>
+                  ) : (
+                    <>
+                    </>
+                  )}
+                  {typeExTaxShippingPercentageWithMinimum ? (
+                    <>
+                      <InputLabel autoComplete="off" id="20" name="shipping_percentage_minimum" label="% frete" onKeyUp={handlePercentual} />
+                      <InputLabel autoComplete="off" id="21" name="shipping_percentage_minimum_minimum" label="Valor mínimo" onKeyUp={handleCurrency} />
+                    </>
+                  ) : (
+                    <>
+                    </>
+                  )}
 
-
-              </InputTaxAmount>
+                  {
+                    typeExTaxFixedValue || typeExTaxProductPercentage
+                    || typeExTaxProductPercentageWithMinimum || typeExTaxValueKilo
+                    || typeExTaxValueKiloWithMinimum || typeExTaxShippingPercentage
+                    || typeExTaxShippingPercentageWithMinimum ? (
+                      <Button type="submit" color="primary"><FaPlus /></Button>
+                      ) : (
+                        <div style={{ width: '190px' }}></div>
+                      )
+                  }
+                </InputTaxAmount>
+              </InputOthersTaxContainer>
 
             </InputsTaxesContainer>
 

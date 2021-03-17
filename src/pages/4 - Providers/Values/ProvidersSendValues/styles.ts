@@ -439,9 +439,8 @@ export const InputsTaxesContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     display: flex;
-
+    padding-bottom: 25px;
     margin-top: 10px;
-
     border-bottom: #D4D4D4 solid 0.8px;
 `;
 
@@ -451,8 +450,9 @@ export const InputsTaxesContainerList = styled.div`
     align-items: center;
     display: flex;
 
-    margin-top: 10px;
-
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 25px;
     border-bottom: #D4D4D4 solid 0.8px ;
 
     /* :hover{
@@ -517,6 +517,22 @@ export const InputSubtotalCurrencyPicker = styled.div`
     height: 35px;
     display: flex;
     align-items: center;
+`;
+
+export const InputOthersTaxContainer = styled.div`
+  max-width: 168px;
+  margin-left: 22px;
+  padding-right: 25px;
+
+  & div {
+    display: flex;
+    width: 100%;
+  }
+
+  & button {
+    position: relative;
+    top: -7px;
+  }
 `;
 
 export const InputTaxAmount = styled.div`
