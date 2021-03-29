@@ -11,11 +11,11 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   display: flex;
   width: 100%;
-  height: 45px;
+  height: 100%;
   flex-direction: column;
   position: relative;
-  border: 2px solid #E7E7E7;
-  border-radius: 4px;
+  /* border: 2px solid #E7E7E7; */
+  /* border-radius: 4px; */
 
     /* & + div {
             margin-top: 8px;
@@ -23,12 +23,14 @@ export const Container = styled.div<ContainerProps>`
 
     ${(props) => props.isErrored && css`
         color: #C53030;
-        border-color: #C53030;
+        border: 2px solid #C53030;
+        /* border-color: #C53030; */
     `}
 
     ${(props) => props.isFocused && css`
         color: #0B7FE3;
-        border-color: #33415C;
+        /* border-color: #33415C; */
+        border: 2px solid #33415C;
     `}
 
     ${(props) => props.isFilled && css`
@@ -51,18 +53,6 @@ export const Container = styled.div<ContainerProps>`
         font-size: 16px;
         font-weight: 500;
         color: #535353;
-    }
-
-    /* Chrome, Safari, Edge, Opera */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    /* Firefox */
-    input[type=number] {
-      -moz-appearance: textfield;
     }
 
     svg {

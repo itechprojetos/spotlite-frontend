@@ -91,7 +91,7 @@ const ProviderSpotOpen: React.FC = () => {
                 row.quoted === 'Cotar' ? history.push({
                   pathname: '/send-values',
                   state: {
-                    name: row.name, email: row.email, spot_providers_id: row.spot_providers_id, title: row.title, pickup_city_state: row.pickup_city_state, delivery_city_state: row.delivery_city_state, modal: row.modal, load_type: row.load_type, closure_days: row.closure_days,
+                    name: row.name, email: row.email, spot_providers_id: row.spot_providers_id, title: row.title, pickup_city_state: row.pickup_city_state, delivery_city_state: row.delivery_city_state, modal: row.modal, load_type: row.load_type, closure_days: row.closure_days, spot_id: row.id,
                   },
                 }) : addToast({
                   type: 'info',

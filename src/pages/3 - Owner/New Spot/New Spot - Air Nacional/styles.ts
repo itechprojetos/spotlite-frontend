@@ -191,14 +191,14 @@ export const InputTextField = styled(TextField)`
     }
 `;
 
-export const InputContainer = styled.div`
-    /* display: flex; */
+export const InputContainerTwo = styled.div`
     margin-bottom: 8px;
     width: 40%;
+`;
 
-    div {
-        border-radius: 4px;
-    }
+export const InputContainer = styled.div`
+    margin-bottom: 8px;
+    width: 30%;
 `;
 
 export const TagInput = styled.button`
@@ -216,69 +216,67 @@ export const TagInput = styled.button`
     padding: 0 0 0 5px;
 `;
 
+export const InputLabelContainer = styled.div`
+    width: 40%;
+    height: 40px;
+    color: #666360;
+    margin-top: 16px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+`;
+
+export const InputLabelContainerMargin = styled.div`
+    width: 40%;
+    height: 40px;
+    color: #666360;
+    /* margin-top: 16px; */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+`;
+
 export const SelectContainer = styled.div`
-    padding: 16px;
     width: 100%;
     height: 40px;
     color: #666360;
     border: 0.5px solid #B6B5B5;
+    background: #FFF;
 
-    align-items: center;
     display: flex;
+    align-items: center;
+    place-content: center;
     margin-bottom: 8px;
-
-    select {
-        flex: 1;
-        background: transparent;
-        border: 0;
-        font-family: 'Montserrat';
-        font-weight: 500;
-        color: #767676;
-    }
+    justify-content: space-between;
 `;
 
 export const SelectContainerMeasures = styled.div`
-    padding: 0 10px 0 16px;
     width: 100%;
     height: 40px;
     color: #666360;
     border: 0.5px solid #B6B5B5;
 
+    display: flex;
+    align-items: center;
+    place-content: center;
+    margin-bottom: 8px;
+    justify-content: space-between;
+`;
+
+export const SelectContainerDimensions = styled.div`
+    width: 100%;
+    height: 40px;
+    color: #666360;
+    border: 0.5px solid #B6B5B5;
+    background: #FFF;
+
     align-items: center;
     display: flex;
     margin-bottom: 8px;
     justify-content: space-between;
-
-    div {
-        /* background: #000; */
-        padding: 0;
-        width: 40%;
-        height: 35px;
-        border-width: 0 0 0 0;
-        border-radius: 0;
-        border-bottom-width: 1px;
-        background: transparent;
-
-        input {
-            font-size: 13px;
-            font-weight: 500;
-        }
-    }
-
-    select {
-        width: 100px;
-        background: transparent;
-        border: 0;
-        font-family: 'Inter';
-        font-weight: 400;
-        color: #767676;
-
-
-    }
 `;
 
 export const SelectContainerPrice = styled.div`
-    padding: 0 10px 0 16px;
     width: 100%;
     height: 40px;
     color: #666360;
@@ -288,27 +286,10 @@ export const SelectContainerPrice = styled.div`
     display: flex;
     margin-bottom: 8px;
     justify-content: space-between;
-
-    div {
-        margin-top: 2px;
-        padding: 0;
-        width: 100%;
-        height: 35px;
-        border-width: 0 0 0 0;
-        border-radius: 0;
-        border-bottom-width: 1px;
-        background: transparent;
-
-        input {
-            /* font-size: 13px; */
-            /* font-weight: 500; */
-            font-family: 'Roboto';
-        }
-    }
 `;
 
 export const SelectContainerClosureDate = styled.div`
-    padding: 0 5px 0 5px;
+    /* padding: 0 5px 0 5px; */
     width: 100%;
     height: 40px;
     color: #666360;
@@ -317,50 +298,6 @@ export const SelectContainerClosureDate = styled.div`
     align-items: center;
     display: flex;
     justify-content: center;
-
-    div {
-        margin-top: 5px;
-        width: 90%;
-        background: transparent;
-    }
-`;
-
-export const SelectContainerDimensions = styled.div`
-    padding: 0 10px 0 16px;
-    width: 180px;
-    height: 40px;
-    color: #666360;
-    border: 0.5px solid #B6B5B5;
-
-    align-items: center;
-    display: flex;
-    margin-bottom: 8px;
-    justify-content: space-between;
-
-    div {
-        /* background: #000; */
-        padding: 0;
-        width: 40%;
-        height: 35px;
-        border-width: 0 0 0 0;
-        border-radius: 0;
-        border-bottom-width: 1px;
-        background: transparent;
-
-        input {
-            font-size: 13px;
-            font-weight: 500;
-        }
-    }
-
-    select {
-        width: 100px;
-        background: transparent;
-        border: 0;
-        font-family: 'Inter';
-        font-weight: 400;
-        color: #767676;
-    }
 `;
 
 export const AddButton = styled.div`
@@ -507,6 +444,35 @@ export const ButtonNextStep = styled.button`
     }
 `;
 
+export const ButtonAddLoad = styled.button`
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #5C677D;
+
+    align-items: center;
+    place-content: center;
+    display: flex;
+    margin-bottom: 8px;
+    color: #5C677D;
+    font-weight: 700;
+    font-size: 13px;
+
+    svg {
+        margin-right: 10px;
+    }
+
+    :hover {
+        cursor: pointer;
+        background: #5C677D;
+        color: #FFF;
+
+        svg {
+            color: #FFF;
+        }
+    }
+`;
+
 export const AmountAdd = styled.h1`
     font-size: 13px;
     font-weight: 500;
@@ -548,4 +514,53 @@ export const KeyboardTimePickerInput = styled(KeyboardDateTimePicker)`
     .MuiInput-underline:before {
         border-bottom: 0;
     }
+`;
+
+export const DinamicDataContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+
+    h1 {
+        font-family: 'Roboto';
+        font-size: 13px;
+        font-weight: 900;
+        margin-right: 5px;
+        width: 100px;
+    }
+
+    h2 {
+        font-family: 'Roboto';
+        font-size: 13px;
+        width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+`;
+
+export const DinamicDataContent = styled.div`
+    border: 1px solid #E3E1E1;
+    background: #EAEAEA;
+    border-radius: 4px;
+    padding: 5px;
+    max-width: 40%;
+    margin-bottom: 10px;
+
+    svg {
+        color: #5c677d;
+        width: 20px;
+        height: 20px;
+         :hover {
+             cursor: pointer;
+         }
+    }
+
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+
+`;
+
+export const DinamicDataItem = styled.div`
+    display: flex;
 `;

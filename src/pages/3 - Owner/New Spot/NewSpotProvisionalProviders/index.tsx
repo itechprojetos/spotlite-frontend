@@ -187,7 +187,7 @@ const NewSpotProvisionalProviders: React.FC = () => {
           data={suppliers}
           actions={[
             {
-              icon: 'check',
+              icon: 'add_circle_outline',
               iconProps: { style: { color: '#CC6200' } },
               tooltip: 'Selecionar',
               onClick: (event: any, row: Suppliers): void => {

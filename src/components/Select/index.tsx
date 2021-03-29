@@ -1,41 +1,50 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import ReactSelect from 'react-select';
+import { useField } from '@unform/core';
 
-import Select from 'react-select';
+import { Container } from './styles';
 
-function Picker({
-  OnChange,
-  options,
-  placeholder,
-  isMulti,
-  name,
-  defaultValue,
-}: any) {
-  // Customização visual do Picker
-  const customStyles = {
-    control: (base: any) => ({
-      ...base,
-      height: 45,
-    }),
-  };
+const Select = ({ name, ...rest }: any): any => {
+  const selectRef = useRef(null);
 
+  const {
+    fieldName, defaultValue, registerField, error,
+  } = useField(name);
+
+  useEffect(() => {
+    registerField({
+      name: fieldName,
+      ref: selectRef.current,
+      setValue: (ref, value) => {
+        ref.select.setValue(value || null);
+      },
+      getValue: (ref) => {
+        if (rest.isMulti) {
+          if (!ref.state.value) {
+            return [];
+          }
+          return ref.state.value.map((option: any) => option.value);
+        }
+        if (!ref.state.value) {
+          return '';
+        }
+        return ref.state.value.value;
+      },
+    });
+  }, [fieldName, registerField, rest.isMulti]);
 
   return (
-    <div>
-      <Select
-        options={options}
-        name={name}
-        styles={customStyles}
-        isMulti={isMulti}
-        placeholder={placeholder}
-        onChange={OnChange}
+    <Container>
+      <ReactSelect
+        className={`select ${error && 'select-error'}`}
         defaultValue={defaultValue}
-        theme={(theme) => ({
-          ...theme,
-          borderRadius: 3,
-        })}
+        placeholder="Selecione..."
+        noOptionsMessage={() => 'Sem correspondência'}
+        ref={selectRef}
+        {...rest}
       />
-    </div>
+    </Container>
   );
-}
+};
 
-export default Picker;
+export default Select;

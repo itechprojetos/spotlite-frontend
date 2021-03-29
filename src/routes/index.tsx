@@ -72,6 +72,9 @@ import ClientSummaryValuesSpots from '../pages/3 - Owner/Values/ClientSummaryVal
 import ClientSummaryValuesSpotsClose from '../pages/3 - Owner/Values/ClientSummaryValuesSpotsClose';
 import CompareAllValues from '../pages/3 - Owner/Values/CompareAllValues';
 
+
+import Testes from '../pages/3 - Owner/New Spot/New Spot - (backup)';
+
 const Routes: React.FC = () => (
 
   <Switch>
@@ -136,6 +139,8 @@ const Routes: React.FC = () => (
     <AnalystAndMasterRoute path="/client-summary-values-close" component={ClientSummaryValuesSpotsClose} isPrivate />
     <AnalystAndMasterRoute path="/providers-summary-price" component={ProvidersSummaryPrice} isPrivate />
     <AnalystAndMasterRoute path="/compare-all-values" component={CompareAllValues} isPrivate />
+
+    <AnalystAndMasterRoute path="/test" component={Testes} isPrivate />
 
   </Switch>
 );

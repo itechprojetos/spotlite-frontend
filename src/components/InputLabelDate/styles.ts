@@ -17,10 +17,6 @@ export const Container = styled.div<ContainerProps>`
   border: 2px solid #E7E7E7;
   border-radius: 4px;
 
-    /* & + div {
-            margin-top: 8px;
-        } */
-
     ${(props) => props.isErrored && css`
         color: #C53030;
         border-color: #C53030;
@@ -37,7 +33,6 @@ export const Container = styled.div<ContainerProps>`
 
     .Active {
         transform: translate(0, 2px) scale(0.75);
-        /* color: #33415C; */
     }
 
     input {
@@ -51,18 +46,6 @@ export const Container = styled.div<ContainerProps>`
         font-size: 16px;
         font-weight: 500;
         color: #535353;
-    }
-
-    /* Chrome, Safari, Edge, Opera */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    /* Firefox */
-    input[type=number] {
-      -moz-appearance: textfield;
     }
 
     svg {
@@ -84,7 +67,6 @@ export const Container = styled.div<ContainerProps>`
 
     :focus-within label {
         transform: translate(0, 2px) scale(0.75);
-        /* color: #33415C; */
     }
 `;
 

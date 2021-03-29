@@ -13,7 +13,6 @@ import {
   FaTelegramPlane,
   FaRegTrashAlt,
   FaPlus,
-  FaInfoCircle,
 } from 'react-icons/fa';
 
 import * as Yup from 'yup';
@@ -106,10 +105,7 @@ import {
   InputTaxCurrencyPickerSecondaryValue,
   InputTaxAmountListSecondary,
   InputOthersTaxContainer,
-  MoreInfoButton,
 } from './styles';
-import { Fab, Modal } from '@material-ui/core';
-import MoreDetails from './MoreDetails';
 
 const useStyles = makeStyles({
   root: {
@@ -217,6 +213,7 @@ interface LocationState {
   modal: string;
   load_type: string;
   closure_days: string;
+  spot_id: string;
 }
 
 interface CurrencyLabel {
@@ -294,8 +291,6 @@ const ProvidersSendValues: React.FC = () => {
   const location = useLocation<LocationState>();
 
   const { addToast } = useToast();
-
-  const [modalMoreInfoOpen, setModalMoreInfoOpen] = useState(false);
 
   // Todas as moedas, tipadas em 'label' e 'value'
   const [currencies, setCurrencies] = useState<CurrencyLabel[]>([]);
@@ -1154,28 +1149,8 @@ const ProvidersSendValues: React.FC = () => {
     //   }
   }, [exclusiveFees]);
 
-  const handleToggleMoreInfoModal = useCallback(() => {
-    setModalMoreInfoOpen((state) => !state);
-  }, [setModalMoreInfoOpen]);
-
   return (
     <>
-      <MoreInfoButton
-        onClick={handleToggleMoreInfoModal}
-      >
-        <Fab variant="extended">
-          <FaInfoCircle size={18} />
-          Detalhes da proposta
-        </Fab>
-      </MoreInfoButton>
-
-      <Modal
-        open={modalMoreInfoOpen}
-        onClose={handleToggleMoreInfoModal}
-      >
-        <MoreDetails toggleHandler={handleToggleMoreInfoModal} />
-      </Modal>
-
       <Container>
         <Header>
           <Title>Proposta</Title>
@@ -1703,7 +1678,7 @@ const ProvidersSendValues: React.FC = () => {
                     || typeExTaxShippingPercentageWithMinimum ? (
                       <Button type="submit" color="primary"><FaPlus /></Button>
                       ) : (
-                        <div style={{ width: '190px' }}></div>
+                        <div style={{ width: '190px' }} />
                       )
                   }
                 </InputTaxAmount>
