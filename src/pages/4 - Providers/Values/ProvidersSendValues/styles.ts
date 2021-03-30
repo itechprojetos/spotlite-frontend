@@ -780,3 +780,13 @@ export const TotalTaxAmount = styled.div`
 
     /* border: #000 solid 4px; */
 `;
+
+export const MoreInfoButton = styled.div`
+  position: fixed;
+  bottom: 30px;
+  right: 25px;
+
+  svg {
+    margin-right: 0.5rem;
+  }
+`;
