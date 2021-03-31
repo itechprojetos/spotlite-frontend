@@ -398,7 +398,8 @@ const MoreDetails: React.FC<MoreDetails> = ({ spotId, toggleHandler = false }) =
                   variant="outlined"
                   size="small"
                   inputProps={{ readOnly: true }}
-                  defaultValue="Notebook HP i7 16GB 120GB SSD"
+                  InputLabelProps={{ shrink: !!spot?.load_description }}
+                  value={spot?.load_description}
                 />
               </Grid>
               <Grid item xs={4}>
@@ -407,31 +408,12 @@ const MoreDetails: React.FC<MoreDetails> = ({ spotId, toggleHandler = false }) =
                   variant="outlined"
                   size="small"
                   inputProps={{ readOnly: true }}
-                  defaultValue="R$ 5.490,55"
+                  InputLabelProps={{ shrink: !!spot?.spot_value }}
+                  value={spot?.spot_value}
                 />
               </Grid>
             </Grid>
             <Box mb={2} />
-            <Grid container xs={12} spacing={2}>
-              <Grid item xs={8}>
-                <InputTextField
-                  label="Descrição"
-                  variant="outlined"
-                  size="small"
-                  inputProps={{ readOnly: true }}
-                  defaultValue="Monitor LG Ultrawide 29'"
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <InputTextField
-                  label="Valor"
-                  variant="outlined"
-                  size="small"
-                  inputProps={{ readOnly: true }}
-                  defaultValue="R$ 1.155,00"
-                />
-              </Grid>
-            </Grid>
           </TabPanel>
           <TabPanel value={currentTab} index={6}>
             <Box component="p" mb={4}>
